@@ -1,5 +1,3 @@
-
-
 var firebaseConfig = {
     apiKey: "api-key",
     authDomain: "project-id.firebaseapp.com",
