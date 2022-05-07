@@ -19,12 +19,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
 
 var con = firebase.database().ref('users');
 
-document.getElementById("form").addEventListener("submit", (e) => {
+document.getElementById("form").addEventListener("button", (e) => {
     e.preventDefault();
 
 
@@ -39,9 +38,10 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
     });
     alert("sent");
+    console.log("sent")
     document.getElementById("form").reset();
 });
 
-function getUd(id) {
-    return document.getElementById(id).ariaValueMax;
+function getId(id) {
+    return document.getElementById(id).value;
 }
