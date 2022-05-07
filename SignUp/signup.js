@@ -29,12 +29,13 @@ document.getElementById("form").addEventListener("button", (e) => {
 
     var userInfo = con.push();
     userInfo.set({
-        firstname: getId("name"),
-        lastname: getId("lastname"),
+        firstname: getId("FirstName"),
+        lastname: getId("LastName"),
         studentID: getId("StudentID"),
-        DateofBirth: getId("Gender"),
-        email: getId("email"),
-        password: getId("password")
+        DateofBirth: getId("DateOfBirth"),
+        Gender: getId("Gender"),
+        email: getId("Email"),
+        password: getId("Password")
 
     });
     alert("sent");
