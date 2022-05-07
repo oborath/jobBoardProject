@@ -7,7 +7,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+var firebaselConfig = {
     apiKey: "AIzaSyDgkxfJZsCv0OYojrDzjmY8YzjZWLRjAlg",
     authDomain: "job-board-55b1b.firebaseapp.com",
     databaseURL: "https://job-board-55b1b-default-rtdb.firebaseio.com",
@@ -19,8 +19,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebasel.initializeApp(firebaselConfig):
+
 
 var con = firebase.database().ref('users');
 
@@ -30,7 +30,7 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
     var userInfo = con.push();
     userInfo.set({
-        firstname: getId("name"),
+        firstname: getId("firstname"),
         lastname: getId("lastname"),
         studentID: getId("StudentID"),
         DateofBirth: getId("Gender"),
@@ -44,5 +44,5 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
 function getUd(id) {
     return document.getElementById(id).ariaValueMax;
-    
+
 }
