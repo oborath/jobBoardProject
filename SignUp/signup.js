@@ -7,7 +7,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+var config = {
     apiKey: "AIzaSyDgkxfJZsCv0OYojrDzjmY8YzjZWLRjAlg",
     authDomain: "job-board-55b1b.firebaseapp.com",
     databaseURL: "https://job-board-55b1b-default-rtdb.firebaseio.com",
@@ -19,11 +19,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 var con = firebase.database().ref('users');
 
-document.getElementById("form").addEventListener("button", (e) => {
+document.getElementById("form").addEventListener("submit", (e)=>{
     e.preventDefault();
 
 
