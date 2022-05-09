@@ -23,6 +23,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+      </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -114,6 +118,8 @@
                     </div>
   
                   </form>
+
+
   
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
@@ -130,13 +136,54 @@
     </div>
   </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
-></script>
-<script src="https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js"> </script>
-<script type="module"  src="signup.js"> </script>
+<script src=
+"https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+	</script>
+	
+	<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDrwtklTOMhsRRDaWo34o_saDizghVkRQ4",
+      authDomain: "job-board-2beab.firebaseapp.com",
+      databaseURL: "https://job-board-2beab-default-rtdb.firebaseio.com",
+      projectId: "job-board-2beab",
+      storageBucket: "job-board-2beab.appspot.com",
+      messagingSenderId: "631501036101",
+      appId: "1:631501036101:web:aa68add3b603d4de3c212c",
+      measurementId: "G-1C0Y8M7GL1"
+    };
+
+		firebase.initializeApp(firebaseConfig);
+
+		var messagesRef = firebase.database()
+			.ref('Collected Data');
+		
+		document.getElementById('form')
+			.addEventListener('submit', submitForm);
+
+		function submitForm(e) {
+			e.preventDefault();
+
+			// Get values
+			var firstName = getInputVal('firstName');
+			var email = getInputVal('email');
+
+			saveMessage(name, email);
+			document.getElementById('form').reset();
+		}
+
+		// Function to get get form values
+		function getInputVal(id) {
+			return document.getElementById(id).value;
+		}
+
+		// Save message to firebase
+		function saveMessage(name, email) {
+			var newMessageRef = messagesRef.push();
+			newMessageRef.set({
+				firstName: firstName,
+				email: email,
+			});
+		}
+	</script>
 </body>
 </html>
