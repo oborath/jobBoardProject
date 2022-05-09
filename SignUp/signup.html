@@ -167,7 +167,7 @@
 			var firstName = getInputVal('firstName');
 			var email = getInputVal('email');
 
-			saveMessage(name, email);
+			saveMessage(firstName, email);
 			document.getElementById('form').reset();
 		}
 
@@ -180,7 +180,7 @@
 		function saveMessage(name, email) {
 			var newMessageRef = messagesRef.push();
 			newMessageRef.set({
-				firstName: firstName,
+				name: firstName,
 				email: email,
 			});
 		}
