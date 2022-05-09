@@ -165,9 +165,13 @@
 
 			// Get values
 			var firstName = getInputVal('firstName');
-			var email = getInputVal('email');
-
-			saveMessage(firstName, email);
+      var lastName = getInputVal('lastName');
+      var email = getInputVal('email');
+      var studentid = getInputVal('studentid');
+      var dob = getInputVal('dob');
+      var gender = getInputVal('gender');
+      var password = getInputVal('password');
+			saveMessage(firstName, lastName, email, studentid, dob, gender, password);
 			document.getElementById('form').reset();
 		}
 
@@ -177,11 +181,16 @@
 		}
 
 		// Save message to firebase
-		function saveMessage(name, email) {
+		function saveMessage(firstName, lastName, email, studentid, dob, gender, password) {
 			var newMessageRef = messagesRef.push();
 			newMessageRef.set({
-				name: firstName,
+				firstName: firstName,
+        lastName: lastName,
 				email: email,
+        studentid: studentid,
+        dob: dob,
+        gender: gender,
+        password: password,
 			});
 		}
 	</script>
