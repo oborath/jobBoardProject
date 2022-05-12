@@ -159,7 +159,6 @@
   // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-    const auth = getAuth();
 
     signUp.addeventListener('click', (e) => {
       var messagesRef = firebase.database()
@@ -184,41 +183,29 @@
 		}
       // var email = document.getId('').value;
       // var password = document.getId('').value;
-      createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // ...
-      })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
 });
-		//firebase.initializeApp(firebaseConfig);
+		firebase.initializeApp(firebaseConfig);
 
-		// var messagesRef = firebase.database()
-		// 	.ref('Collected Data');
+		var messagesRef = firebase.database()
+			.ref('Collected Data');
 		
-		// document.getElementById('form')
-		// 	.addEventListener('submit', submitForm);
+		document.getElementById('form')
+			.addEventListener('submit', submitForm);
 
-		// function submitForm(e) {
-		// 	e.preventDefault();
+		function submitForm(e) {
+			e.preventDefault();
 
-		// 	// Get values
-		// 	var firstName = getInputVal('firstName');
-    //   var lastName = getInputVal('lastName');
-    //   var email = getInputVal('email');
-    //   var studentid = getInputVal('studentid');
-    //   var dob = getInputVal('dob');
-    //   var gender = getInputVal('gender');
-    //   var password = getInputVal('password');
-		// 	saveMessage(firstName, lastName, email, studentid, dob, gender, password);
-		// 	document.getElementById('form').reset();
-		// }
+			// Get values
+			var firstName = getInputVal('firstName');
+      var lastName = getInputVal('lastName');
+      var email = getInputVal('email');
+      var studentid = getInputVal('studentid');
+      var dob = getInputVal('dob');
+      var gender = getInputVal('gender');
+      var password = getInputVal('password');
+			saveMessage(firstName, lastName, email, studentid, dob, gender, password);
+			document.getElementById('form').reset();
+		}
 
 		// Function to get get form values
 		function getInputVal(id) {
