@@ -14,36 +14,41 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 
-    <section class="vh-100">
-        <div class="container h-100">
-          <div class="row d-flex align-items-center justify-content-center h-100">
+
+    <div class="container h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+
             <div class="col-md-8 col-lg-7 col-xl-6">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                 class="img-fluid" alt="Phone image">
             </div>
+
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <form onsubmit="login(event)" class="mx-1 mx-md-4">
-                <!-- Email input -->
-                <div class="form-outline mb-4 ">
-                  <input type="email" id="email" class="form-control form-control-lg"/>
-                  <label class="form-label" for="form1Example13">Email address</label>
+               <div id="not-logged-in">
+                    <form onsubmit="login(event)" class="mx-1 mx-md-4">
+                        <!-- Email input -->
+                        <div class="form-outline mb-4 ">
+                            <input type="email" id="email" class="form-control form-control-lg"/>
+                            <label class="form-label" for="form1Example13">Email address</label>
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password" class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example23">Password</label>
+                        </div>   
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                    </form>
                 </div>
-      
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control form-control-lg" />
-                  <label class="form-label" for="form1Example23">Password</label>
+                <div id="logged-in">
+                    <h3>You are now logged in!</h3>
+                    <button onclick="logout()">Logout</button> 
                 </div>
-      
-                
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-      
-              </form>
+
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+
 
     <script>
         const firebaseConfig = {
@@ -60,32 +65,40 @@
         const auth = firebase.auth();
 
         firebase.auth().onAuthStateChanged(function(user) {
-            var notloggedIn = document.getElementById("email");
-            var loggedIn = document.getElementById("email");
+            var notLoggedIn = document.getElementById('not-logged-in')
+            var loggedIn = document.getElementById('logged-in')
             if (user) {
                 // User is signed in, see docs for a list of available properties
-                .style.display = 'block'
-                .style.display = 'none'
+                loggedIn.style.display = 'block'
+                notLoggedIn.style.display = 'none'
             } else {
                 // User is signed out
-                .style.display = 'none'
-                .style.display = 'none'
+                loggedIn.style.display = 'none'
+                notLoggedIn.style.display = 'block'
             }
         });
 
         //logged in 
         function login(event) {
             event.preventDefault();
-            
+            var email = document.getElementById('email').value
+            var password = document.getElementById('password').value 
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                console.log('Error signing in', error.message)
+                alert(error.message)
+            }).then(function(user) {
+                if(user) {
+                    alert('welcome back')
+                }
+            })
         }
 
         //logged out
         function logout() {
-
+            firebase.auth().signOut().then(function() {
+            }).catch(function(error) {
+            });
         }
-
-
-
     </script>
 
 </body>
