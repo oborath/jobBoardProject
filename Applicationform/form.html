@@ -27,13 +27,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <script src=
-    "https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js">
-  </script>
+      "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js">
+    </script>
   
-  <script src=
-    "https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js">
-  </script>
-  
+    <script src=
+      "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js">
+    </script> 
+
+
 </head>
 <body>
   <section class="vh-100" style="background-color: black;">
@@ -41,55 +42,41 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-9">
         <h1 class="text-white mb-4">Apply for a job</h1>
+        
         <form  id="form" class="mx-1 mx-md-4">
 
         <!-- first name column -->
-
         <div class="card" style="border-radius: 15px;">
           <div class="card-body">
 
             <div class="row align-items-center pt-4 pb-3">
               <div class="col-md-3 ps-5">
-
                 <h6 class="mb-0">First Name</h6>
-
               </div>
               <div class="col-md-9 pe-5">
-
-                <input type="text" class="form-control form-control-lg" />
-
+                <input type="text" id="firstName" class="form-control form-control-lg" />
               </div>
             </div>
             <hr class="mx-n3">
+
             <!-- last name column  -->
-    
                 <div class="row align-items-center pt-4 pb-3">
                   <div class="col-md-3 ps-5">
-    
                     <h6 class="mb-0">Last Name</h6>
-    
                   </div>
                   <div class="col-md-9 pe-5">
-    
-                    <input type="text" class="form-control form-control-lg" />
-    
+                    <input type="text" id="lastName" class="form-control form-control-lg" />
                   </div>
                 </div>
 
                 <!-- email column  -->
-
             <hr class="mx-n3">
-
             <div class="row align-items-center py-3">
               <div class="col-md-3 ps-5">
-
                 <h6 class="mb-0">Email address</h6>
-
               </div>
               <div class="col-md-9 pe-5">
-
                 <input type="email" class="form-control form-control-lg" placeholder="example@example.com" />
-
               </div>
             </div>
 
@@ -102,10 +89,8 @@
 
               </div>
               <div class="col-md-9 pe-5">
-
                 <input type="text" class="form-control form-control-lg" />
     
-
               </div>
             </div>
 
@@ -143,10 +128,9 @@
 
 <!-- javascript -->
 
-  // Import the functions you need from the SDKs you need
-  <script src= "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js"></script>
-  <script src= "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js"></script>
-
+<script src=
+"https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+</script>
 
 <script>
   // Your web app's Firebase configuration
@@ -163,8 +147,10 @@
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // const app = initializeApp(firebaseConfig);
+  // const analytics = getAnalytics(app);
+
+  firebase.initializeApp(firebaseConfig);
 
 
 var messagesRef = firebase.database()
@@ -199,10 +185,6 @@ document.getElementById('form')
       });
     }
 
-var messagesRef2 = firebase.database()
-  .ref('Collected Data2');
-
-  
 </script>
 </body>
 </html>
